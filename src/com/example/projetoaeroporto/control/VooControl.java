@@ -1,8 +1,8 @@
-package com.example.projetoaeroporto.control;
+package src.com.example.projetoaeroporto.control;
 
-import com.example.projetoaeroporto.DAO.VooDAO;
-import com.example.projetoaeroporto.DAO.VooDAOImplements;
-import com.example.projetoaeroporto.entity.Voo;
+import src.com.example.projetoaeroporto.DAO.VooDAO;
+import src.com.example.projetoaeroporto.DAO.VooDAOImplements;
+import src.com.example.projetoaeroporto.entity.Voo;
 import javafx.beans.property.*;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
@@ -52,7 +52,7 @@ public class VooControl {
         v.setPreco(preco.get());
         return v;
     }
-    public void salvar() {
+    public void atualizar() {
         Voo voo = toEntity();
         if (voo.getId() == 0) {
             vooDAO.salvar(voo);
@@ -72,6 +72,11 @@ public class VooControl {
 
     public void remover(int id) {
         vooDAO.remover(id);
+    }
+
+    public void salvar(){
+        Voo v = new Voo();
+        fromEntity(v);
     }
 
     public ObservableList<Voo> getLista() {

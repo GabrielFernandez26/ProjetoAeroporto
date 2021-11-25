@@ -1,9 +1,8 @@
-package com.example.projetoaeroporto.DAO;
+package src.com.example.projetoaeroporto.DAO;
 
-import com.example.projetoaeroporto.entity.Voo;
+import src.com.example.projetoaeroporto.entity.Voo;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.sql.*;
@@ -41,7 +40,7 @@ public class VooDAOImplements implements VooDAO{
 
     @Override
     public List<Voo> pesquisarPorId(Integer id) {
-        List<Voo> lista = new ArrayList<>();
+        List<Voo> lista = new ArrayList<Voo>();
 
         Connection con = Context.getConnection();
 

@@ -1,5 +1,5 @@
-package com.example.projetoaeroporto.boundary;
-import com.example.projetoaeroporto.Telas.ExecutorComandos;
+package src.com.example.projetoaeroporto.boundary;
+import src.com.example.projetoaeroporto.Telas.ExecutorComandos;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -11,7 +11,8 @@ import javafx.stage.Stage;
 
 public class PrincipalBoundary extends Application implements ExecutorComandos {
     private VooBoundary vooBoundary = new VooBoundary();
-
+    private ReservaBoundary reservaBoundary = new ReservaBoundary();
+    private CadastroCliente cadastroCliente = new CadastroCliente();
     private BorderPane bp = new BorderPane();
 
     @Override
@@ -20,29 +21,37 @@ public class PrincipalBoundary extends Application implements ExecutorComandos {
 
         MenuBar menuBar = new MenuBar();
 
-        Menu mnuArquivo = new Menu("Arquivo");
-        Menu mnuVoos = new Menu("Cadastro");
+        Menu mnuVoos = new Menu("Cadastro de Vôo");
+        Menu mnuReservas = new Menu("Cadastro de Reserva");
+        Menu mnuCliente = new Menu("Cadastro de Cliente");
+        Menu mnuSair = new Menu("Sair");
 
+        menuBar.getMenus().addAll(mnuVoos,mnuReservas,mnuCliente,mnuSair);
 
-        menuBar.getMenus().addAll(mnuArquivo, mnuVoos);
-
-        MenuItem mnuItemSair = new MenuItem("Sair");
-        mnuItemSair.setOnAction((e) -> {
+        MenuItem mnuItemSair = new MenuItem("Logout");
+        mnuSair.setOnAction((e) -> {
             executarComando("SAIR");
         });
-        MenuItem mnuItemPets = new MenuItem("Vôos");
-        mnuItemPets.setOnAction((e) -> {
+        MenuItem mnuItemVoo = new MenuItem("Vôos");
+        mnuItemVoo.setOnAction((e) -> {
             executarComando("TELA-VOO");
         });
-
+        MenuItem mnuItemReserva = new MenuItem("Reservas");
+        mnuItemVoo.setOnAction((e) -> {
+            executarComando("TELA-RESERVA");
+        });
+        MenuItem mnuItemCliente = new MenuItem("Cliente");
+        mnuItemVoo.setOnAction((e) -> {
+            executarComando("TELA-CLIENTE");
+        });
 
         vooBoundary.adicionarExecutor(this);
+        reservaBoundary.adicionarExecutor(this);
 
-
-        mnuArquivo.getItems().addAll(mnuItemSair);
-        mnuVoos.getItems().addAll(mnuItemPets);
-
-
+        mnuVoos.getItems().addAll(mnuItemVoo);
+        mnuSair.getItems().addAll(mnuItemSair);
+        mnuReservas.getItems().addAll(mnuItemReserva);
+        mnuCliente.getItems().addAll(mnuItemCliente);
         bp.setTop(menuBar);
 
         stage.setScene( scn );
@@ -57,7 +66,10 @@ public class PrincipalBoundary extends Application implements ExecutorComandos {
     public void executarComando(String comando) {
         if ("TELA-VOO".equals(comando)) {
             bp.setCenter( vooBoundary.render() );
-        } else if ("SAIR".equals(comando)) {
+        } else if ("TELA-RESERVA".equals(comando)){
+            bp.setCenter(reservaBoundary.render());
+        }
+        else if ("SAIR".equals(comando)) {
             Platform.exit();
             System.exit(0);
         }

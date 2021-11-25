@@ -1,7 +1,6 @@
-package com.example.projetoaeroporto.DAO;
+package src.com.example.projetoaeroporto.DAO;
 
-import com.example.projetoaeroporto.entity.Reserva;
-import com.example.projetoaeroporto.entity.Voo;
+import src.com.example.projetoaeroporto.entity.Reserva;
 
 import java.util.List;
 

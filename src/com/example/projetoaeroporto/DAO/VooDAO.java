@@ -1,8 +1,7 @@
-package com.example.projetoaeroporto.DAO;
+package src.com.example.projetoaeroporto.DAO;
 
 import java.util.List;
-
-import com.example.projetoaeroporto.entity.*;
+import src.com.example.projetoaeroporto.entity.Voo;
 
 public interface VooDAO {
     void salvar(Voo v);

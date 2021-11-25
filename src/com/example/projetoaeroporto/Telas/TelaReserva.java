@@ -5,7 +5,7 @@ import javafx.scene.layout.Pane;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class TelaVoo {
+public abstract class TelaReserva {
     private List<ExecutorComandos> listaExecutores = new ArrayList<>();
 
     public abstract Pane render();

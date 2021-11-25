@@ -1,8 +1,8 @@
-package com.example.projetoaeroporto.boundary;
+package src.com.example.projetoaeroporto.boundary;
 
-import com.example.projetoaeroporto.Telas.TelaVoo;
-import com.example.projetoaeroporto.control.VooControl;
-import com.example.projetoaeroporto.entity.Voo;
+import src.com.example.projetoaeroporto.Telas.TelaVoo;
+import src.com.example.projetoaeroporto.control.VooControl;
+import src.com.example.projetoaeroporto.entity.Voo;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.scene.control.*;
@@ -12,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.converter.LocalDateTimeStringConverter;
 import javafx.util.converter.NumberStringConverter;
+
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -33,10 +34,10 @@ public class VooBoundary extends TelaVoo {
     private DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 
-    private Button btnReservar= new Button("Reservar");
+    private Button btnSalvar= new Button("Salvar");
     private Button btnRemover= new Button("Remover");
     private Button btnPesquisar = new Button("Pesquisar");
-    private Button btnSalvar = new Button("Salvar");
+    private Button btnAtualizar = new Button("Atualizar");
 
     private void criarTabela(){
         TableColumn<Voo,Integer> col1=new TableColumn<>("Id");
@@ -97,7 +98,7 @@ public class VooBoundary extends TelaVoo {
     public Pane render() {
         BorderPane panPrincipal = new BorderPane();
         GridPane panCampos = new GridPane();
-
+        txtId.setEditable(false);
         criarTabela();
 
         panPrincipal.setTop(panCampos);
@@ -121,18 +122,18 @@ public class VooBoundary extends TelaVoo {
         panCampos.add(new Label("Preco:"), 0, 4);
         panCampos.add(txtPreco, 1, 4);
 
-        panCampos.add(btnReservar, 0, 5);
+        panCampos.add(btnSalvar, 0, 5);
         panCampos.add(btnRemover,1,5);
         panCampos.add(btnPesquisar, 2, 5);
-        panCampos.add(btnSalvar,3,5);
+        panCampos.add(btnAtualizar,3,5);
 
-        btnReservar.setOnAction((e) -> {
+        btnSalvar.setOnAction((e) -> {
             control.salvar();
             new Alert(Alert.AlertType.INFORMATION, "Voo cadastrado com sucesso");
         });
 
-        btnSalvar.setOnAction((e)->{
-            control.salvar();
+        btnAtualizar.setOnAction((e)->{
+            control.atualizar();
             new Alert(Alert.AlertType.INFORMATION, "Voo salvo com sucesso");
         });
 

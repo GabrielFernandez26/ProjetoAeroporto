@@ -1,10 +1,11 @@
-package com.example.projetoaeroporto.entity;
+package src.com.example.projetoaeroporto.entity;
 
 import java.time.LocalDate;
 
 public class Cliente {
+    private int id;
     private String nome;
-    private String rg;
+    private int cpf;
     private LocalDate nascimento;
 
     public String getNome() {
@@ -15,12 +16,12 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getRg() {
-        return rg;
+    public int getId() {
+        return id;
     }
 
-    public void setRg(String rg) {
-        this.rg = rg;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public LocalDate getNascimento() {
@@ -29,6 +30,14 @@ public class Cliente {
 
     public void setNascimento(LocalDate nascimento) {
         this.nascimento = nascimento;
+    }
+
+    public int getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(int cpf) {
+        this.cpf = cpf;
     }
 
     @Override

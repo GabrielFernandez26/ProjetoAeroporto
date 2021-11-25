@@ -1,4 +1,4 @@
-package com.example.projetoaeroporto.entity;
+package src.com.example.projetoaeroporto.entity;
 
 public class Reserva {
     private int id;

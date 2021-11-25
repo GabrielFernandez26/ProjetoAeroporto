@@ -1,4 +1,4 @@
-package com.example.projetoaeroporto.entity;
+package src.com.example.projetoaeroporto.entity;
 
 import java.time.LocalDateTime;
 

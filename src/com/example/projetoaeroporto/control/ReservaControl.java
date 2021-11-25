@@ -1,8 +1,8 @@
-package com.example.projetoaeroporto.control;
+package src.com.example.projetoaeroporto.control;
 
-import com.example.projetoaeroporto.DAO.ReservaDAO;
-import com.example.projetoaeroporto.DAO.ReservaDAOImplements;
-import com.example.projetoaeroporto.entity.Reserva;
+import src.com.example.projetoaeroporto.DAO.ReservaDAO;
+import src.com.example.projetoaeroporto.DAO.ReservaDAOImplements;
+import src.com.example.projetoaeroporto.entity.Reserva;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReservaControl {
-private ReservaDAO reservaDAO = new ReservaDAOImplements();
+    private ReservaDAO reservaDAO = new ReservaDAOImplements();
 
     public IntegerProperty id = new SimpleIntegerProperty(0);
     public IntegerProperty cliente = new SimpleIntegerProperty(0);
@@ -57,7 +57,7 @@ private ReservaDAO reservaDAO = new ReservaDAOImplements();
         fromEntity(r);
     }
 
-    public void alterar() {
+    public void atualizar() {
 
     }
     public void remover(int id) {

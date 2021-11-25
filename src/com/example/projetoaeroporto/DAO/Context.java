@@ -1,4 +1,4 @@
-package com.example.projetoaeroporto.DAO;
+package src.com.example.projetoaeroporto.DAO;
 
 
 import java.sql.DriverManager;
