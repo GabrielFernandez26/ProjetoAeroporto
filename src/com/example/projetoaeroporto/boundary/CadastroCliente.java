@@ -1,6 +1,5 @@
 package src.com.example.projetoaeroporto.boundary;
 
-import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -30,15 +29,15 @@ public class CadastroCliente extends TelaCliente {
     private void criarTabela(){
         TableColumn<Cliente,Integer> col1=new TableColumn<>("Id");
         col1.setCellValueFactory(
-                new PropertyValueFactory<Cliente,Integer>("id do cliente")
+                new PropertyValueFactory<Cliente,Integer>("id")
         );
-        TableColumn<Cliente,String> col2=new TableColumn<>("nome do cliente");
+        TableColumn<Cliente,String> col2=new TableColumn<>("nome");
         col2.setCellValueFactory(
-                new PropertyValueFactory<Cliente,String>("nome cliente")
+                new PropertyValueFactory<Cliente,String>("nome")
         );
-        TableColumn<Cliente,String> col3=new TableColumn<>("cpf do cliente");
+        TableColumn<Cliente,String> col3=new TableColumn<>("cpf");
         col3.setCellValueFactory(
-                new PropertyValueFactory<Cliente, String>("cpf id")
+                new PropertyValueFactory<Cliente, String>("cpf")
         );
 
         TableColumn<Cliente, String> col4 = new TableColumn<>("Ações");
@@ -91,6 +90,8 @@ public class CadastroCliente extends TelaCliente {
         panCampos.add(txtNome, 1, 1);
         panCampos.add(new Label("Cpf do cliente:"), 0, 2);
         panCampos.add(txtCpf, 1, 2);
+        panCampos.add(new Label("Data de nascimento: "), 0, 3);
+        panCampos.add(txtNascimento, 1, 3);
 
 
         panCampos.add(btnSalvar, 0, 5);
@@ -99,7 +100,7 @@ public class CadastroCliente extends TelaCliente {
         panCampos.add(btnAtualizar,3,5);
 
         btnSalvar.setOnAction((e) -> {
-            control.cadastrar();
+            control.salvar();
             new Alert(Alert.AlertType.INFORMATION, "Cliente cadastrado com sucesso");
         });
 

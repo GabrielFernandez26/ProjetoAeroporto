@@ -8,7 +8,7 @@ CREATE TABLE  aeroporto.voo (
   pouso datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   assentos int(100) unsigned NOT NULL DEFAULT 150,
   PRIMARY KEY (id)
-) 
+);
 
 CREATE TABLE aeroporto.cliente (
   id INTEGER UNSIGNED NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE aeroporto.cliente (
   datanascimento DATETIME NOT NULL DEFAULT 0,
   cpf VARCHAR(11) NOT NULL DEFAULT '',
   PRIMARY KEY(id)
-)
+);
 CREATE TABLE aeroporto.reserva (
   id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   id_voo INTEGER UNSIGNED NOT NULL DEFAULT 0,
@@ -31,4 +31,4 @@ CREATE TABLE aeroporto.reserva (
     REFERENCES cliente (id)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT
-)
+);

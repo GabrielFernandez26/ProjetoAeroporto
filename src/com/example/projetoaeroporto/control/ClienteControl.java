@@ -50,16 +50,25 @@ public class ClienteControl {
         public void fromEntity(Cliente c) {
             id.set(c.getId());
             nome.set(c.getNome());
-            nascimento.set((LocalDate)c.getNascimento());
+            nascimento.set(c.getNascimento());
             cpf.set(c.getCpf());
         }
-        public void cadastrar() {
-            Cliente c = new Cliente();
-            fromEntity(c);
+        public void salvar() {
+            Cliente cliente = toEntity();
+            if (cliente.getId() == 0) {
+                clienteDAO.salvar(cliente);
+            } else {
+                clienteDAO.atualizar( id.get(), cliente );
+            }
         }
 
         public void alterar() {
-
+            Cliente cliente = toEntity();
+            if (cliente.getId() == 0) {
+                clienteDAO.salvar(cliente);
+            } else {
+                clienteDAO.atualizar( id.get(), cliente );
+            }
         }
         public void remover(int id) {
             clienteDAO.remover(id);

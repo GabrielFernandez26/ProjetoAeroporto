@@ -29,7 +29,7 @@ public class PrincipalBoundary extends Application implements ExecutorComandos {
         menuBar.getMenus().addAll(mnuVoos,mnuReservas,mnuCliente,mnuSair);
 
         MenuItem mnuItemSair = new MenuItem("Logout");
-        mnuSair.setOnAction((e) -> {
+        mnuItemSair.setOnAction((e) -> {
             executarComando("SAIR");
         });
         MenuItem mnuItemVoo = new MenuItem("Vôos");
@@ -37,17 +37,17 @@ public class PrincipalBoundary extends Application implements ExecutorComandos {
             executarComando("TELA-VOO");
         });
         MenuItem mnuItemReserva = new MenuItem("Reservas");
-        mnuItemVoo.setOnAction((e) -> {
+        mnuItemReserva.setOnAction((e) -> {
             executarComando("TELA-RESERVA");
         });
         MenuItem mnuItemCliente = new MenuItem("Cliente");
-        mnuItemVoo.setOnAction((e) -> {
+        mnuItemCliente.setOnAction((e) -> {
             executarComando("TELA-CLIENTE");
         });
 
         vooBoundary.adicionarExecutor(this);
         reservaBoundary.adicionarExecutor(this);
-
+        cadastroCliente.adicionarExecutor(this);
         mnuVoos.getItems().addAll(mnuItemVoo);
         mnuSair.getItems().addAll(mnuItemSair);
         mnuReservas.getItems().addAll(mnuItemReserva);
@@ -65,11 +65,12 @@ public class PrincipalBoundary extends Application implements ExecutorComandos {
     @Override
     public void executarComando(String comando) {
         if ("TELA-VOO".equals(comando)) {
-            bp.setCenter( vooBoundary.render() );
+            bp.setCenter(vooBoundary.render() );
         } else if ("TELA-RESERVA".equals(comando)){
             bp.setCenter(reservaBoundary.render());
-        }
-        else if ("SAIR".equals(comando)) {
+        }else if("TELA-CLIENTE".equals(comando)){
+            bp.setCenter(cadastroCliente.render());
+        }else if ("SAIR".equals(comando)) {
             Platform.exit();
             System.exit(0);
         }

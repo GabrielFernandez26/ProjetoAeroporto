@@ -12,21 +12,19 @@ public class ClienteDAOImplements implements ClienteDAO {
 
     @Override
     public void salvar(Cliente c) {
-        Connection con = Context.getConnection();
+
         try {
-            String sql = "INSERT INTO cliente (id, nome, datanascimento, cpf) " +
-                    "VALUES (?, ?, ?, ?)";
+            Connection con = Context.getConnection();
+            String sql = "INSERT INTO cliente (nome, datanascimento, cpf) " +
+                    "VALUES (?, ?, ?)";
             System.out.println(sql);
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, c.getId());
             stmt.setString(1,  c.getNome());
-            stmt.setDate(1,  java.sql.Date.valueOf(c.getNascimento()));
-            stmt.setInt(1, c.getCpf());
+            stmt.setDate(2,  java.sql.Date.valueOf(c.getNascimento()));
+            stmt.setInt(3, c.getCpf());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally{
-            Context.closeConnection(con);
         }
     }
 
